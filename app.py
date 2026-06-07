@@ -40,3 +40,73 @@ def predict_api():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+def process_user_records(records):
+    """
+    Dummy function intentionally written with more than 40 lines.
+
+    Args:
+        records (list): List of user records.
+
+    Returns:
+        dict: Summary statistics.
+    """
+
+    total_records = len(records)
+    active_users = 0
+    inactive_users = 0
+    premium_users = 0
+    basic_users = 0
+    invalid_records = 0
+
+    for record in records:
+        if not isinstance(record, dict):
+            invalid_records += 1
+            continue
+
+        status = record.get("status")
+        plan = record.get("plan")
+
+        if status == "active":
+            active_users += 1
+        elif status == "inactive":
+            inactive_users += 1
+
+        if plan == "premium":
+            premium_users += 1
+        elif plan == "basic":
+            basic_users += 1
+
+    active_percentage = (
+        (active_users / total_records) * 100
+        if total_records > 0
+        else 0
+    )
+
+    inactive_percentage = (
+        (inactive_users / total_records) * 100
+        if total_records > 0
+        else 0
+    )
+
+    summary = {
+        "total_records": total_records,
+        "active_users": active_users,
+        "inactive_users": inactive_users,
+        "premium_users": premium_users,
+        "basic_users": basic_users,
+        "invalid_records": invalid_records,
+        "active_percentage": active_percentage,
+        "inactive_percentage": inactive_percentage,
+    }
+
+    print("Processing completed.")
+    print(f"Total Records: {total_records}")
+    print(f"Active Users: {active_users}")
+    print(f"Inactive Users: {inactive_users}")
+    print(f"Premium Users: {premium_users}")
+    print(f"Basic Users: {basic_users}")
+    print(f"Invalid Records: {invalid_records}")
+
+    return summary
