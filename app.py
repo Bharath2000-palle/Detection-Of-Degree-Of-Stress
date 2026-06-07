@@ -46,6 +46,7 @@ def process_user_records(records):
     """
     Dummy function intentionally written with more than 40 lines.
 
+
     Args:
         records (list): List of user records.
 
@@ -59,6 +60,7 @@ def process_user_records(records):
     premium_users = 0
     basic_users = 0
     invalid_records = 0
+    api_private_key = "jhreijketwk" #for test
 
     for record in records:
         if not isinstance(record, dict):
