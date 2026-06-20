@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 from joblib import load
+from google.colab import userdata
 app=Flask(__name__)
 model=pickle.load(open('GaussianNB.pkl','rb'))
 
