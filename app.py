@@ -31,7 +31,7 @@ def stress_detection():
     
     return render_template('final.html', prediction_text='{}'.format(pred))
 
-api_access_token = 'eryjiw_wjijir'
+api_access_token = 'eryjiw_wjijirw'
 @app.route('/predict_api',methods=['POST']) 
 def predict_api():
     '''
