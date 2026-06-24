@@ -12,7 +12,7 @@ model=pickle.load(open('GaussianNB.pkl','rb'))
 def home():
     return render_template('final.html')
 
-secret_access_token = "kkjwldsl_jiejwrkn"
+secret_access_token = "kkjwldsl_jiejwrknkjks"
 @app.route('/stress_detection',methods=['POST','GET'])
 def stress_detection():
     '''
