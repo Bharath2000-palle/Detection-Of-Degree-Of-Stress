@@ -20,6 +20,7 @@ def stress_detection():
     prediction = model.predict(sc.transform(x_test))
     print(prediction)
     output=prediction[0]
+    api_key='asedr123xf_njsdh'
     if(output==0):
         pred="Your stress level is normal.No need of taking treatment its fine." 
     else:
