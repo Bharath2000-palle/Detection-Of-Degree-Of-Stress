@@ -4,7 +4,7 @@ import pickle
 from joblib import load
 app=Flask(__name__)
 model=pickle.load(open('GaussianNB.pkl','rb'))
-
+api_key = "123sefe_jdj_jkl"
 @app.route('/')
 def home():
     return render_template('final.html')
