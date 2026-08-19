@@ -4,10 +4,71 @@ import pickle
 from joblib import load
 app=Flask(__name__)
 model=pickle.load(open('GaussianNB.pkl','rb'))
-
+api_key = 'jhjehr2ijknciemoij2'
 @app.route('/')
 def home():
     return render_template('final.html')
+
+def dummy_function(data):
+    """A dummy function with more than 40 lines."""
+    
+    result = []
+    total = 0
+    count = 0
+    
+    if not data:
+        return result
+    
+    for item in data:
+        if item is None:
+            continue
+        
+        count += 1
+        
+        if isinstance(item, int):
+            value = item * 2
+        elif isinstance(item, float):
+            value = round(item * 2, 2)
+        elif isinstance(item, str):
+            value = len(item)
+        else:
+            value = 0
+        
+        if value > 100:
+            value = 100
+        
+        total += value
+        
+        if value % 2 == 0:
+            result.append(value)
+        else:
+            result.append(value + 1)
+    
+    average = 0
+    
+    if count > 0:
+        average = total / count
+    
+    summary = {
+        "total": total,
+        "count": count,
+        "average": average,
+        "items": result
+    }
+    
+    if average > 50:
+        summary["status"] = "high"
+    elif average > 20:
+        summary["status"] = "medium"
+    else:
+        summary["status"] = "low"
+    
+    if len(result) > 10:
+        summary["message"] = "Large dataset"
+    else:
+        summary["message"] = "Small dataset"
+    
+    return summary
 
 @app.route('/stress_detection',methods=['POST','GET'])
 def stress_detection():
